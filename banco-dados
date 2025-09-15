@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS sistema_tarefas
+DEFAULT CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+
+
+USE sistema_tarefas;
+
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE IF NOT EXISTS tarefas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao TEXT NOT NULL,
+    setor VARCHAR(100) NOT NULL,
+    usuario VARCHAR(100) NOT NULL,
+    prioridade ENUM('Baixa', 'Média', 'Alta') NOT NULL,
+    status ENUM('Pendente', 'Em andamento', 'Concluída') DEFAULT 'Pendente',
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
